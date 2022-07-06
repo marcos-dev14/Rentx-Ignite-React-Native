@@ -3,13 +3,13 @@ import { RFValue } from 'react-native-responsive-fontsize';
 import styled from 'styled-components/native';
 
 interface ContainerProps extends TouchableOpacityProps {
-  color: string;
+  type: 'primary' | 'secondary'
 }
 
 export const Container = styled(TouchableOpacity)<ContainerProps>`
   width: 100%;
-  background: ${({color, theme}) =>
-    color ? color : theme.colors.main
+  background: ${({type, theme}) =>
+    type === 'primary' ? theme.colors.main : theme.colors.success
   };
   align-items: center;
   justify-content: center;

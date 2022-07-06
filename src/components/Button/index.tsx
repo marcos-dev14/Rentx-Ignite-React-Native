@@ -6,12 +6,12 @@ import {
 
 interface ButtonProps {
   title: string;
-  color?: string;
+  type: 'primary' | 'secondary'
 }
 
-export function Button({ title, color, ...rest }: ButtonProps) {
+export function Button({ title, type, ...rest }: ButtonProps) {
   return (
-    <Container {...rest} color={color}>
+    <Container {...rest} type={type}>
       <Title>{title}</Title>
     </Container>
   );
