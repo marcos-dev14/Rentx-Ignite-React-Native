@@ -13,9 +13,18 @@ import SpeedSvg from '../../assets/speed.svg';
 
 import { Button } from '../../components/Button';
 import {
-  About, Accessories, Brand, CarImages,
-  Container, Content, Description, Details, Footer, Header, Name, Period,
-  Price, Rent
+  About,
+  Accessories,
+  Brand,
+  CarImages,
+  Container,
+  Content,
+  Description,
+  Details, Footer, Header,
+  Name,
+  Period,
+  Price,
+  Rent
 } from './styles';
 
 export function CarDetails() {
