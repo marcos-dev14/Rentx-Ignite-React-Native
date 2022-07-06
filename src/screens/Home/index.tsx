@@ -7,11 +7,11 @@ import LogoSvg from '../../assets/logo.svg';
 import { CarCard } from '../../components/CarCard';
 
 import {
-  CarList,
   Container,
   Header,
   HeaderContent,
-  TotalCars
+  TotalCars,
+  CarList,
 } from './styles';
 
 export function Home() {

@@ -3,15 +3,15 @@ import React from 'react';
 import GasolineSvg from '../../assets/gasoline.svg';
 
 import {
-  About,
-  Brand,
-  CarImage,
   Container,
   Details,
+  Brand,
   Name,
+  About,
+  CarImage,
+  Rent,
   Period,
   Price,
-  Rent,
   Type
 } from './styles';
 

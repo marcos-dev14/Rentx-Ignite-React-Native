@@ -1,11 +1,12 @@
-import { Feather } from '@expo/vector-icons';
 import React from 'react';
+import { Feather } from '@expo/vector-icons';
 import { RFValue } from 'react-native-responsive-fontsize';
 import { useTheme } from 'styled-components';
 
 import { BackButton } from '../../components/BackButton';
 import { CarAccessory } from '../../components/CarAccessory';
 import { ImageSlider } from '../../components/ImageSlider';
+import { Button } from '../../components/Button';
 
 import AccelerationSvg from '../../assets/acceleration.svg';
 import ExchangeSvg from '../../assets/exchange.svg';
@@ -13,8 +14,6 @@ import ForceSvg from '../../assets/force.svg';
 import GasolineSvg from '../../assets/gasoline.svg';
 import PeopleSvg from '../../assets/people.svg';
 import SpeedSvg from '../../assets/speed.svg';
-
-import { Button } from '../../components/Button';
 
 import {
   Container,
@@ -102,7 +101,7 @@ export function SchedulingDetails() {
           />
 
           <DateInfo>
-            <DateTitle>DE</DateTitle>
+            <DateTitle>AtÉ</DateTitle>
             <DateValue>06/07/2022</DateValue>
           </DateInfo>
         </RentalPeriod>

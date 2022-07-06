@@ -1,11 +1,11 @@
 import React from 'react';
 
 import {
-  CarImage,
-  CarImageWrapper,
   Container,
+  ImageIndexes,
   ImageIndex,
-  ImageIndexes
+  CarImageWrapper,
+  CarImage,
 } from './styles';
 
 interface ImageSliderProps {
