@@ -11,7 +11,7 @@ interface ButtonProps {
 
 export function Button({ title, type, ...rest }: ButtonProps) {
   return (
-    <Container {...rest} type={type}>
+    <Container {...rest} type={type} activeOpacity={0.7}>
       <Title>{title}</Title>
     </Container>
   );
