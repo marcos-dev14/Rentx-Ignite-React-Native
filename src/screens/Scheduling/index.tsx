@@ -1,3 +1,4 @@
+import { useNavigation } from '@react-navigation/native';
 import React from 'react';
 import { StatusBar } from 'react-native';
 
@@ -20,6 +21,16 @@ import {
 } from './styles';
 
 export function Scheduling() {
+  const navigation = useNavigation();
+  
+  function handleGoBack() {
+    navigation.goBack()
+  }
+
+  function handleConfirmeRental() {
+    navigation.navigate('schedulingDetails')
+  }
+
   return (
     <>
       <StatusBar 
@@ -31,7 +42,7 @@ export function Scheduling() {
         <Header>
           <BackButton 
             type="secondary"
-            onPress={() => {}}  
+            onPress={handleGoBack}  
           />
 
           <Title>
@@ -60,7 +71,11 @@ export function Scheduling() {
         </Content>
 
         <Footer>
-          <Button title="Confirmar" />
+          <Button 
+            title="Confirmar" 
+            type="primary" 
+            onPress={handleConfirmeRental}  
+          />
         </Footer>
       </Container>
     </>

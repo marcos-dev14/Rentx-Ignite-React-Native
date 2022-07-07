@@ -11,7 +11,7 @@ interface ConfirmeButtonProps extends TouchableOpacityProps {
 
 export function ConfirmeButton({ title, ...rest }: ConfirmeButtonProps) {
   return (
-    <Container activeOpacity={0.7}>
+    <Container {...rest} activeOpacity={0.7}>
       <Title>{title}</Title>
     </Container>
   );

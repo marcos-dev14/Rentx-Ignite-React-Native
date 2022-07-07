@@ -15,7 +15,7 @@ export function BackButton({ type, ...rest }: BackButtonProps) {
   const theme = useTheme();
 
   return (
-    <Container activeOpacity={0.7}>
+    <Container {...rest} activeOpacity={0.7}>
       <MaterialIcons 
         name="chevron-left"
         size={24}

@@ -12,9 +12,16 @@ import {
   Footer
 } from './styles';
 import { ConfirmeButton } from '../../components/ConfirmeButton';
+import { useNavigation } from '@react-navigation/native';
 
 export function SchedulingComplete() {
   const { width } = useWindowDimensions();
+
+  const navigation = useNavigation();
+
+  function handleGoHome() {
+    navigation.navigate('home')
+  }
 
   return (
     <>
@@ -38,7 +45,10 @@ export function SchedulingComplete() {
         </Content>
 
         <Footer>
-          <ConfirmeButton title="OK" />
+          <ConfirmeButton
+            title="OK"
+            onPress={handleGoHome}
+          />
         </Footer>
 
       </Container>

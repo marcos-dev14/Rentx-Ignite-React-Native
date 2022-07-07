@@ -40,14 +40,25 @@ import {
   RentalPriceQuota,
   RentalPriceTotal,
 } from './styles';
+import { useNavigation } from '@react-navigation/native';
 
 export function SchedulingDetails() {
   const theme = useTheme();
 
+  const navigation = useNavigation();
+
+  function handleGoBack() {
+    navigation.goBack()
+  }
+
+  function handleGoScheduleComplete() {
+    navigation.navigate('schedulingComplete')
+  }
+
   return (
     <Container>
       <Header>
-        <BackButton type="primary" onPress={() => {}} />
+        <BackButton type="primary" onPress={handleGoBack} />
       </Header>
 
       <CarImages>
@@ -118,7 +129,8 @@ export function SchedulingDetails() {
       <Footer>
         <Button 
           type="secondary"
-          title="Alugar agora"  
+          title="Alugar agora"
+          onPress={handleGoScheduleComplete}
         />
       </Footer>
     </Container>
