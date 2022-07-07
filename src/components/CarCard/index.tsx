@@ -16,18 +16,10 @@ import {
   Type
 } from './styles';
 
-interface CarData {
-  brand: string;
-  name: string;
-  rent: {
-    period: string;
-    price: string;
-  },
-  thumbnail: string;
-}
+import { CarDataProps } from '../../@types/CarTypes';
 
 interface CarCardProps extends TouchableOpacityProps {
-  data: CarData;
+  data: CarDataProps;
 }
 
 export function CarCard({ data, ...rest }: CarCardProps) {
