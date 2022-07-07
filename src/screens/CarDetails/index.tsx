@@ -76,8 +76,8 @@ export function CarDetails() {
 
       <Footer>
         <Button 
+          type="primary"
           title="Escolher período do aluguel"
-          
         />
       </Footer>
     </Container>
