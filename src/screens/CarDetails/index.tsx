@@ -1,4 +1,6 @@
 import React from 'react';
+import { useNavigation, useRoute } from '@react-navigation/native';
+import { StatusBar } from 'react-native';
 
 import { BackButton } from '../../components/BackButton';
 import { CarAccessory } from '../../components/CarAccessory';
@@ -28,11 +30,16 @@ import {
   Accessories,
   Footer, 
 } from './styles';
-import { useNavigation } from '@react-navigation/native';
-import { StatusBar } from 'react-native';
+import { CarDataProps } from '../../@types/CarTypes';
+
+interface RouteParams {
+  car: CarDataProps;
+}
 
 export function CarDetails() {
   const navigation = useNavigation();
+  const route = useRoute();
+  const { car } = route.params as RouteParams;
 
   function handleGoBack() {
     navigation.goBack()
@@ -59,36 +66,35 @@ export function CarDetails() {
 
         <CarImages>
           <ImageSlider 
-            imagesUrl={['https://freepngimg.com/thumb/audi/35227-5-audi-rs5-red.png']} 
+            imagesUrl={car.photos} 
           />
         </CarImages>
 
         <Content>
           <Details>
             <Description>
-              <Brand>Lamborghini</Brand>
-              <Name>Huracan</Name>
+              <Brand>{car.brand}</Brand>
+              <Name>{car.name}</Name>
             </Description>
 
             <Rent>
-              <Period>Ao dia</Period>
-              <Price>R$ 580</Price>
+              <Period>{car.rent.period}</Period>
+              <Price>{`R$ ${car.rent.price}`}</Price>
             </Rent>
           </Details>
 
           <Accessories>
-            <CarAccessory name="380km/h" icon={SpeedSvg} />
-            <CarAccessory name="3.2s" icon={AccelerationSvg} />
-            <CarAccessory name="800 HP" icon={ForceSvg} />
-            <CarAccessory name="Gasolina" icon={GasolineSvg} />
-            <CarAccessory name="Auto" icon={ExchangeSvg} />
-            <CarAccessory name="2 pessoas" icon={PeopleSvg} />
+            {car.accessories.map(accessory => (
+              <CarAccessory 
+                key={accessory.type}
+                name={accessory.name}
+                icon={SpeedSvg} 
+              />
+            ))}
           </Accessories>
 
           <About>
-            Este é automóvel desportivo. Surgiu do lendário touro de lide 
-            indultado na praça Real Maestranza de Sevilla. É um belíssimo 
-            carro para quem gosta de acelerar.
+            {car.about}
           </About>
         </Content>
 

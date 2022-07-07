@@ -25,18 +25,8 @@ export function Home() {
 
   const navigation = useNavigation();
 
-  const carData = {
-    brand: 'Audi',
-    name: 'RS 5 Coupé',
-    rent: {
-      period: 'AO DIA',
-      price: '120',
-    },
-    thumbnail: 'https://freepngimg.com/thumb/audi/35227-5-audi-rs5-red.png'
-  }
-
-  function handleGoCarDetails() {
-    navigation.navigate('carDetails')
+  function handleGoCarDetails(car: CarDataProps) {
+    navigation.navigate('carDetails', { car })
   }
 
   useEffect(() => {
@@ -81,7 +71,7 @@ export function Home() {
             keyExtractor={item => item.id}
             renderItem={({ item }) => 
               <CarCard data={item} 
-              onPress={handleGoCarDetails} 
+              onPress={() => handleGoCarDetails(item)} 
             />}
           />
         }
