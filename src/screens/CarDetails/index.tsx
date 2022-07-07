@@ -7,12 +7,8 @@ import { CarAccessory } from '../../components/CarAccessory';
 import { ImageSlider } from '../../components/ImageSlider';
 import { Button } from '../../components/Button';
 
-import AccelerationSvg from '../../assets/acceleration.svg';
-import ExchangeSvg from '../../assets/exchange.svg';
-import ForceSvg from '../../assets/force.svg';
-import GasolineSvg from '../../assets/gasoline.svg';
-import PeopleSvg from '../../assets/people.svg';
-import SpeedSvg from '../../assets/speed.svg';
+import { CarDataProps } from '../../@types/CarTypes';
+import { getAccessoryIcon } from '../../utils/getAccessoryIcon';
 
 import {
   Container,
@@ -30,7 +26,7 @@ import {
   Accessories,
   Footer, 
 } from './styles';
-import { CarDataProps } from '../../@types/CarTypes';
+
 
 interface RouteParams {
   car: CarDataProps;
@@ -88,7 +84,7 @@ export function CarDetails() {
               <CarAccessory 
                 key={accessory.type}
                 name={accessory.name}
-                icon={SpeedSvg} 
+                icon={getAccessoryIcon(accessory.type)} 
               />
             ))}
           </Accessories>
