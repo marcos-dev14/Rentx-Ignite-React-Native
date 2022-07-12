@@ -9,8 +9,8 @@ export declare global {
     interface RootParamList {
       home: undefined;
       carDetails: car;
-      scheduling: undefined;
-      schedulingDetails: undefined;
+      scheduling: car;
+      schedulingDetails: car;
       schedulingComplete: undefined;
     }
   }

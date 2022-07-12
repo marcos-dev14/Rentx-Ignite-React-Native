@@ -2,13 +2,14 @@ import React from 'react';
 import { useNavigation, useRoute } from '@react-navigation/native';
 import { StatusBar } from 'react-native';
 
+import { getAccessoryIcon } from '../../utils/getAccessoryIcon';
+
 import { BackButton } from '../../components/BackButton';
 import { CarAccessory } from '../../components/CarAccessory';
 import { ImageSlider } from '../../components/ImageSlider';
 import { Button } from '../../components/Button';
 
 import { CarDataProps } from '../../@types/CarTypes';
-import { getAccessoryIcon } from '../../utils/getAccessoryIcon';
 
 import {
   Container,
@@ -42,7 +43,7 @@ export function CarDetails() {
   }
 
   function handleGoScheduling() {
-    navigation.navigate('scheduling');
+    navigation.navigate('scheduling', { car });
   }
 
   return (
