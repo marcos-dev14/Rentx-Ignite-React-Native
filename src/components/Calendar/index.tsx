@@ -1,23 +1,43 @@
 import React from 'react';
 import { Feather } from '@expo/vector-icons';
-import { Calendar as CustomCalendar, LocaleConfig } from 'react-native-calendars';
+import { Calendar as CustomCalendar, CalendarProps, LocaleConfig } from 'react-native-calendars';
 import { useTheme } from 'styled-components';
 
-LocaleConfig.locales['pt-br'] = {
-  monthNames: ['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho', 'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro'],
-  monthNamesShort: ['Jan', 'Fev', 'Mar', 'Abr', 'Mai', 'Jun', 'Jul', 'Ago', 'Set', 'Out', 'Nov', 'Dez'],
-  dayNames: ['Doming', 'Segunda', 'Terça', 'Quarta', 'Quinta', 'Sexta', 'Sábado'],
-  dayNamesShort: ['DOM', 'SEG', 'TER', 'QUA', 'QUI', 'SEX', 'SÁB',],
-  today: 'Hoje'
-}
-LocaleConfig.defaultLocale = 'pt-br'
+import { generateInterval } from './generateInterval';
+import { ptBR } from './localeConfig';
 
-export function Calendar() {
+LocaleConfig.locales['pt-br'] = ptBR;
+LocaleConfig.defaultLocale = 'pt-br';
+
+// Props para o período selecionado
+interface MarkedDateProps {
+  [date: string]: {
+    color: string;
+    textColor: string;
+    disabled?: boolean;
+    disableTouchEvent?: boolean;
+  }
+}
+
+// Props para o dia selecionado
+interface DayProps {
+  dateString: string;
+  day: number;
+  month: number;
+  year: number;
+  timestamp: number;
+}
+
+function Calendar({
+  markedDates,
+  onDayPress,
+}: CalendarProps) {
   const theme = useTheme();
 
   return (
     <CustomCalendar 
       renderArrow={(direction) => 
+        // @ts-ignore
         <Feather 
           name={direction === 'left' ? 'chevron-left' : 'chevron-right'}
           size={24}
@@ -43,7 +63,17 @@ export function Calendar() {
         }
       }}
       firstDay={1}
-      minDate={new Date()}
+      minDate={String(new Date())}
+      markingType="period"
+      markedDates={markedDates}
+      onDayPress={onDayPress}
     />
   );
+}
+
+export {
+  Calendar,
+  MarkedDateProps,
+  DayProps,
+  generateInterval
 }
