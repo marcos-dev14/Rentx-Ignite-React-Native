@@ -85,7 +85,7 @@ export function Home() {
           />
         }
 
-        <MyCarsButton onPress={handleGoMyCars}>
+        <MyCarsButton onPress={handleGoMyCars} activeOpacity={0.7}>
           {/* @ts-ignore */}
           <Ionicons 
             name="ios-car-sport"
