@@ -12,6 +12,7 @@ export declare global {
       scheduling: car;
       schedulingDetails: car;
       schedulingComplete: undefined;
+      myCars: undefined;
     }
   }
 }
