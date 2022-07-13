@@ -85,3 +85,25 @@ export const CarFooterDate = styled.Text`
   color: ${({theme}) => theme.colors.title};
   font-size: ${RFValue(13)}px;
 `;
+
+export const MessageWrapper = styled.View`
+  width: 100%;
+  margin-top: 80px;
+  align-items: center;
+  justify-content: center;
+`;
+
+export const Message = styled.Text`
+  font-family: ${({theme}) => theme.fonts.secondary_600};
+  color: ${({theme}) => theme.colors.main};
+  font-size: ${RFValue(22)}px;
+`;
+
+export const SubMessage = styled.Text`
+  font-family: ${({theme}) => theme.fonts.primary_400};
+  color: ${({theme}) => theme.colors.title};
+  font-size: ${RFValue(15)}px;
+  line-height: ${RFValue(25)}px;
+  text-align: center;
+  margin-top: 16px;
+`;
