@@ -7,6 +7,7 @@ interface ItemsParams {
 export declare global {
   namespace ReactNavigation {
     interface RootParamList {
+      splashScreen: undefined;
       home: undefined;
       carDetails: car;
       scheduling: car;
