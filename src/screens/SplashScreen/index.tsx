@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { Button, StyleSheet, Dimensions } from 'react-native';
+import { StatusBar } from 'react-native';
 
 import Animated, { 
   useSharedValue, 
@@ -60,14 +60,22 @@ export function SplashScreen() {
   },[])
 
   return (
-    <Container>
-      <Animated.View style={[brandStyle, {position: 'absolute'}]}>
-        <BrandSvg width={80} height={50} />
-      </Animated.View>
+    <>
+      <StatusBar 
+        barStyle="light-content"
+        backgroundColor="transparent"
+        translucent
+      />
 
-      <Animated.View style={[logoStyle, {position: 'absolute'}]}>
-        <LogoSvg width={180} height={20} />
-      </Animated.View>
-    </Container>
+      <Container>
+        <Animated.View style={[brandStyle, {position: 'absolute'}]}>
+          <BrandSvg width={80} height={50} />
+        </Animated.View>
+
+        <Animated.View style={[logoStyle, {position: 'absolute'}]}>
+          <LogoSvg width={180} height={20} />
+        </Animated.View>
+      </Container>
+    </>
   );
 }
