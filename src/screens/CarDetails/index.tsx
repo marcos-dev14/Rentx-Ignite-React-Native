@@ -45,7 +45,6 @@ export function CarDetails() {
   const scrollY = useSharedValue(0);
   const scrollHandler = useAnimatedScrollHandler(event => {
     scrollY.value = event.contentOffset.y;
-    console.log(event.contentOffset.y);
   })
 
   const headerStyleAnimation = useAnimatedStyle(() => {
@@ -95,6 +94,7 @@ export function CarDetails() {
             <BackButton 
               type="primary"
               onPress={handleGoBack}
+              style={styles.buttonBack}
             />
           </Header>
 
@@ -165,5 +165,10 @@ const styles = StyleSheet.create({
     position: 'absolute',
     overflow: 'hidden',
     zIndex: 1
+  },
+  buttonBack: {
+    position: 'absolute',
+    zIndex: 2,
+    top: 4
   }
 })
