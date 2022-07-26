@@ -3,7 +3,7 @@ import { StatusBar } from 'react-native';
 
 import { Button } from '../../components/Button';
 import { ButtonSingIn } from '../../components/ButtonSingIn';
-import { Input } from '../../components/Input';
+import { EmailInput } from '../../components/EmailInput';
 import { PasswordInput } from '../../components/PasswordInput';
 
 import { 
@@ -37,7 +37,7 @@ export function SignIn() {
         </Header>
 
         <Form>
-          <Input 
+          <EmailInput 
             iconName="mail"
             placeholder='E-mail'
             keyboardType="email-address"

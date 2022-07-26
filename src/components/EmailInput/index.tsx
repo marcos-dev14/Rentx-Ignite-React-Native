@@ -13,7 +13,7 @@ interface Props extends TextInputProps {
   iconName: React.ComponentProps<typeof Feather>['name']
 }
 
-export function Input({
+export function EmailInput({
   iconName,
   ...rest
 }: Props) {
