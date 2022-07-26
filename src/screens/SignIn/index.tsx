@@ -3,8 +3,8 @@ import { StatusBar } from 'react-native';
 
 import { Button } from '../../components/Button';
 import { ButtonSingIn } from '../../components/ButtonSingIn';
-import { EmailInput } from '../../components/EmailInput';
-import { PasswordInput } from '../../components/PasswordInput';
+import { EmailInput } from '../../components/Inputs/EmailInput';
+import { PasswordInput } from '../../components/Inputs/PasswordInput';
 
 import { 
   Container,
