@@ -40,8 +40,8 @@ export function PasswordInput({
   }
   
   return (
-    <Container isFocused={isFocused}>
-      <IconContainer>
+    <Container>
+      <IconContainer isFocused={isFocused}>
         {/* @ts-ignore */}
         <Feather 
           name={iconName}
@@ -54,6 +54,7 @@ export function PasswordInput({
         secureTextEntry={isPasswordVisible}
         onFocus={handleInputFocus}
         onBlur={handleInputBlur}
+        isFocused={isFocused}
         {...rest} 
       />
 
@@ -61,7 +62,7 @@ export function PasswordInput({
         onPress={handlePasswordVisibilityChange}
         activeOpacity={.7}
       >
-        <IconContainer>
+        <IconContainer isFocused={isFocused}>
           {/* @ts-ignore */}
           <Feather 
             name={ isPasswordVisible ? 'eye' : 'eye-off' }

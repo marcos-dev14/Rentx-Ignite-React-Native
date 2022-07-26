@@ -34,8 +34,8 @@ export function EmailInput({
   }
 
   return (
-    <Container isFocused={isFocused} >
-      <IconContainer>
+    <Container>
+      <IconContainer isFocused={isFocused}>
         {/* @ts-ignore */}
         <Feather 
           name={iconName}
@@ -45,6 +45,7 @@ export function EmailInput({
 
       </IconContainer>
       <InputText 
+        isFocused={isFocused} 
         onFocus={handleInputFocus}
         onBlur={handleInputBlur}
         {...rest} 
