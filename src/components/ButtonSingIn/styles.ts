@@ -9,15 +9,22 @@ interface ContainerProps extends TouchableOpacityProps {
 export const Container = styled(TouchableOpacity)<ContainerProps>`
   width: 100%;
   background: ${({type, theme}) =>
-    type === 'primary' ? theme.colors.main : theme.colors.success
+    type === 'primary' ? theme.colors.background_secondary : theme.colors.main
   };
   align-items: center;
   justify-content: center;
   padding: 19px;
+  margin-top: 8px;
 `;
 
-export const Title = styled.Text`
+interface TitleProps {
+  light: boolean;
+}
+
+export const Title = styled.Text<TitleProps>`
   font-family: ${({theme}) => theme.fonts.primary_500};
-  color: ${({theme}) => theme.colors.shape};
+  color: ${({theme, light}) => 
+    light ? theme.colors.header : theme.colors.shape
+  };
   font-size: ${RFValue(15)}px;
 `;
