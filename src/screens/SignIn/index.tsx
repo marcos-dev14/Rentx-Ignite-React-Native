@@ -1,5 +1,10 @@
 import React from 'react';
-import { StatusBar } from 'react-native';
+import { 
+  StatusBar, 
+  KeyboardAvoidingView, 
+  TouchableWithoutFeedback,
+  Keyboard 
+} from 'react-native';
 
 import { Button } from '../../components/Button';
 import { ButtonSingIn } from '../../components/ButtonSingIn';
@@ -23,52 +28,56 @@ export function SignIn() {
         backgroundColor="transparent"
         translucent
       />
-      <Container>
-        <Header>
-          <Title>
-            Estamos{'\n'}
-            quase lá.
-          </Title>
+      <KeyboardAvoidingView behavior="position" enabled>
+        <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
+          <Container>
+            <Header>
+              <Title>
+                Estamos{'\n'}
+                quase lá.
+              </Title>
 
-          <SubTitle>
-            Faça seu login para começar{'\n'}
-            uma experiência incrível.
-          </SubTitle>
-        </Header>
+              <SubTitle>
+                Faça seu login para começar{'\n'}
+                uma experiência incrível.
+              </SubTitle>
+            </Header>
 
-        <Form>
-          <EmailInput 
-            iconName="mail"
-            placeholder='E-mail'
-            keyboardType="email-address"
-            autoCorrect={false}
-            autoCapitalize="none"
-          />
+            <Form>
+              <EmailInput 
+                iconName="mail"
+                placeholder='E-mail'
+                keyboardType="email-address"
+                autoCorrect={false}
+                autoCapitalize="none"
+              />
 
-          <PasswordInput 
-            iconName="lock"
-            placeholder="Senha"
-          />
-        </Form>
+              <PasswordInput 
+                iconName="lock"
+                placeholder="Senha"
+              />
+            </Form>
 
-        <Footer>
-          <Button 
-            title="Login"
-            type="primary"
-            onPress={() => {}}
-            disabled={true}
-            loading={false}
-          />
+            <Footer>
+              <Button 
+                title="Login"
+                type="primary"
+                onPress={() => {}}
+                disabled={true}
+                loading={false}
+              />
 
-          <ButtonSingIn 
-            title="Criar conta gratuita"
-            type="primary"
-            light
-            onPress={() => {}}
-            loading={false}
-          />
-        </Footer>
-      </Container>
+              <ButtonSingIn 
+                title="Criar conta gratuita"
+                type="primary"
+                light
+                onPress={() => {}}
+                loading={false}
+              />
+            </Footer>
+          </Container>
+        </TouchableWithoutFeedback>
+      </KeyboardAvoidingView>
     </>
   );
 }
