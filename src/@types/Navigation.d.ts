@@ -1,3 +1,4 @@
+import { Params } from "../screens/Confirmation";
 import { CarDataProps } from "./CarTypes";
 
 interface ItemsParams {
@@ -14,6 +15,12 @@ interface UserItemsParams {
   user: UserDataProps;
 }
 
+interface ScreenParams {
+  title: string;
+  message: string;
+  nextScreenRoute: 'home' | 'signIn';
+}
+
 export declare global {
   namespace ReactNavigation {
     interface RootParamList {
@@ -22,11 +29,11 @@ export declare global {
       carDetails: car;
       scheduling: car;
       schedulingDetails: car;
-      schedulingComplete: undefined;
+      confirmation: ScreenParams;
       myCars: undefined;
       signIn: undefined;
       firstStep: undefined;
-      secondStep: user;
+      secondStep: undefined;
     }
   }
 }
