@@ -14,7 +14,7 @@ interface Props extends TextInputProps {
   value?: string;
 }
 
-export function EmailInput({
+export function Input({
   iconName,
   value,
   ...rest

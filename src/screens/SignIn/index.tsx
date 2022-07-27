@@ -7,10 +7,11 @@ import {
   Alert
 } from 'react-native';
 import * as Yup from 'yup';
+import { useNavigation } from '@react-navigation/native';
 
 import { Button } from '../../components/Button';
 import { ButtonSingIn } from '../../components/ButtonSingIn';
-import { EmailInput } from '../../components/Inputs/EmailInput';
+import { Input } from '../../components/Inputs/Input';
 import { PasswordInput } from '../../components/Inputs/PasswordInput';
 
 import { 
@@ -25,6 +26,8 @@ import {
 export function SignIn() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+
+  const navigation = useNavigation();
 
   async function handleSignIn() {
     try {
@@ -50,7 +53,10 @@ export function SignIn() {
         )
       }
     }
-    
+  }
+
+  function handleNewAccount() {
+    navigation.navigate('firstStep');
   }
 
   return (
@@ -76,7 +82,7 @@ export function SignIn() {
             </Header>
 
             <Form>
-              <EmailInput 
+              <Input 
                 iconName="mail"
                 placeholder='E-mail'
                 keyboardType="email-address"
@@ -107,7 +113,7 @@ export function SignIn() {
                 title="Criar conta gratuita"
                 type="primary"
                 light
-                onPress={() => {}}
+                onPress={handleNewAccount}
                 loading={false}
               />
             </Footer>

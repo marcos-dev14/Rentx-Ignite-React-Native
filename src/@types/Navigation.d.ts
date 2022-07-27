@@ -14,6 +14,8 @@ export declare global {
       schedulingDetails: car;
       schedulingComplete: undefined;
       myCars: undefined;
+      signIn: undefined;
+      firstStep: undefined;
     }
   }
 }
