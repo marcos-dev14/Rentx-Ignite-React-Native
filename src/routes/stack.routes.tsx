@@ -10,6 +10,7 @@ import { MyCars } from '../screens/MyCars';
 import { SplashScreen } from '../screens/SplashScreen';
 import { SignIn } from '../screens/SignIn';
 import { FirstStep } from '../screens/SignUp/FirstStep';
+import { SecondStep } from '../screens/SignUp/SecondStep';
 
 const { Navigator, Screen } = createStackNavigator();
 
@@ -29,6 +30,11 @@ export function StackRoutes() {
       <Screen 
         name="firstStep"
         component={FirstStep}
+      />
+
+      <Screen 
+        name="secondStep"
+        component={SecondStep}
       />
 
       <Screen 

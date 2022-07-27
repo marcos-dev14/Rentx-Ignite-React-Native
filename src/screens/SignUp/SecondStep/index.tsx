@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import {
   KeyboardAvoidingView,
   TouchableWithoutFeedback,
@@ -8,28 +8,24 @@ import { useNavigation } from '@react-navigation/native';
 
 import { BackButton } from '../../../components/BackButton';
 import { Bullet } from '../../../components/Bullet';
-import { Input } from '../../../components/Inputs/Input';
+import { PasswordInput } from '../../../components/Inputs/PasswordInput';
 import { Button } from '../../../components/Button';
 
 import {
   Container,
   Header,
   Steps,
-  Title,
-  SubTitle,
   Form,
   FormTitle,
 } from './styles';
 
-export function FirstStep() {
+export function SecondStep() {
+  const [password, setPassword] = useState('');
+
   const navigation = useNavigation();
 
   function handleGoBack() {
     navigation.goBack();
-  }
-
-  function handleNextStep() {
-    navigation.navigate('secondStep');
   }
 
   return (
@@ -42,47 +38,33 @@ export function FirstStep() {
               onPress={handleGoBack} 
             />
             <Steps>
-              <Bullet active />
               <Bullet />
+              <Bullet active />
             </Steps>
           </Header>
 
-          <Title>
-            Crie sua{'\n'}
-            conta
-          </Title>
-          <SubTitle>
-            Faça seu cadastro de{'\n'}
-            forma rápida e fácil.
-          </SubTitle>
-
           <Form>
             <FormTitle>
-              1. Dados
+              02. Senha
             </FormTitle>
 
-            <Input 
-              iconName="user"
-              placeholder="Nome"
+            <PasswordInput 
+              iconName="lock"
+              placeholder="Senha"
+              onChangeText={setPassword}
+              value={password}
             />
-
-            <Input 
-              iconName="mail"
-              placeholder="E-mail"
-              keyboardType="email-address"
-            />
-
-            <Input 
-              iconName="credit-card"
-              placeholder="CNH"
-              keyboardType="numeric"
+            <PasswordInput 
+              iconName="lock"
+              placeholder="Repetir senha"
+              onChangeText={setPassword}
+              value={password}
             />
           </Form>
           
           <Button
-            title="Próximo"
-            type="primary"
-            onPress={handleNextStep}
+            title="Cadastrar"
+            type="secondary"
           />
         </Container>
       </TouchableWithoutFeedback>
