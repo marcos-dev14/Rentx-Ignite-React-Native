@@ -4,6 +4,16 @@ interface ItemsParams {
   car: CarDataProps;
 }
 
+interface UserDataProps {
+  name: string;
+  email: string;
+  driverLicense: string;
+}
+
+interface UserItemsParams {
+  user: UserDataProps;
+}
+
 export declare global {
   namespace ReactNavigation {
     interface RootParamList {
@@ -16,7 +26,7 @@ export declare global {
       myCars: undefined;
       signIn: undefined;
       firstStep: undefined;
-      secondStep: undefined;
+      secondStep: user;
     }
   }
 }

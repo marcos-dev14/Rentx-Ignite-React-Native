@@ -2,9 +2,10 @@ import React, { useState } from 'react';
 import {
   KeyboardAvoidingView,
   TouchableWithoutFeedback,
-  Keyboard
+  Keyboard,
+  Alert
 } from 'react-native';
-import { useNavigation } from '@react-navigation/native';
+import { useNavigation, useRoute } from '@react-navigation/native';
 
 import { BackButton } from '../../../components/BackButton';
 import { Bullet } from '../../../components/Bullet';
@@ -19,13 +20,36 @@ import {
   FormTitle,
 } from './styles';
 
+interface Params {
+  user: {
+    name: string;
+    email: string;
+    driverLicense: string;
+  }
+}
+
 export function SecondStep() {
   const [password, setPassword] = useState('');
+  const [passwordConfirm, setPasswordConfirm] = useState('');
 
   const navigation = useNavigation();
+  const route = useRoute();
+  const { user } = route.params as Params;
 
   function handleGoBack() {
     navigation.goBack();
+  }
+
+  function handleRegister() {
+    if (!password || !passwordConfirm) {
+      Alert.alert('Erro', 'Informe a senha para finalizar o cadastrado.')
+    }
+
+    if (password != passwordConfirm) {
+      Alert.alert('Erro', 'As senha não são iguais.')
+    }
+
+    // Enviar para API e cadastrar...
   }
 
   return (
@@ -57,14 +81,16 @@ export function SecondStep() {
             <PasswordInput 
               iconName="lock"
               placeholder="Repetir senha"
-              onChangeText={setPassword}
-              value={password}
+              onChangeText={setPasswordConfirm}
+              value={passwordConfirm}
             />
           </Form>
           
           <Button
             title="Cadastrar"
             type="secondary"
+            onPress={handleRegister}
+            disabled={!passwordConfirm}
           />
         </Container>
       </TouchableWithoutFeedback>
