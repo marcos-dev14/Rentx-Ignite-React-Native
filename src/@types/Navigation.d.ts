@@ -33,7 +33,7 @@ export declare global {
       myCars: undefined;
       signIn: undefined;
       firstStep: undefined;
-      secondStep: undefined;
+      secondStep: user;
     }
   }
 }
