@@ -26,7 +26,7 @@ import {
 export function FirstStep() {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
-  const [diverLicense, setDriverLicense] = useState('');
+  const [driverLicense, setDriverLicense] = useState('');
 
   const navigation = useNavigation();
 
@@ -37,7 +37,7 @@ export function FirstStep() {
   async function handleNextStep() {
     try {
       const schema = Yup.object().shape({
-        diverLicense: Yup.string()
+        driverLicense: Yup.string()
         .required('CNH é obrigatória.'),
         email: Yup.string()
           .email('E-mail inválido.')
@@ -46,7 +46,7 @@ export function FirstStep() {
           .required('Nome é obrigatório.'),
       });
 
-      const data = { name, email, diverLicense };
+      const data = { name, email, driverLicense };
       await schema.validate(data);
 
       navigation.navigate('secondStep', {user: data});
@@ -106,7 +106,7 @@ export function FirstStep() {
               placeholder="CNH"
               keyboardType="numeric"
               onChangeText={setDriverLicense}
-              value={diverLicense}
+              value={driverLicense}
             />
           </Form>
           
@@ -114,7 +114,7 @@ export function FirstStep() {
             title="Próximo"
             type="primary"
             onPress={handleNextStep}
-            disabled={!diverLicense}
+            disabled={!driverLicense}
           />
         </Container>
       </TouchableWithoutFeedback>

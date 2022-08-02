@@ -19,6 +19,7 @@ import {
   Form,
   FormTitle,
 } from './styles';
+import { api } from '../../../services/api';
 
 interface Params {
   user: {
@@ -40,7 +41,7 @@ export function SecondStep() {
     navigation.goBack();
   }
 
-  function handleRegister() {
+  async function handleRegister() {
     if (!password || !passwordConfirm) {
       Alert.alert('Erro', 'Informe a senha para finalizar o cadastrado.')
     }
@@ -50,11 +51,22 @@ export function SecondStep() {
     }
 
     // Enviar para API e cadastrar...
-    navigation.navigate('confirmation', {
-      nextScreenRoute: 'signIn',
-      title: 'Conta Criada!',
-      message: `Agora é só fazer login\n e aproveitar.`
-    })
+    try {
+      await api.post('/users', {
+        name: user.name,
+        email: user.email,
+        driver_license: user.driverLicense,
+        password
+      });
+      navigation.navigate('confirmation', {
+        nextScreenRoute: 'signIn',
+        title: 'Conta Criada!',
+        message: `Agora é só fazer login\n e aproveitar.`
+      })
+    }  catch (error) {
+      console.log({ error: error.response.data })
+      Alert.alert('Opa', 'Não foi possível cadastrar.');
+    }
   }
 
   return (

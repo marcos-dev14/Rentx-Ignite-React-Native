@@ -9,6 +9,8 @@ import {
 import * as Yup from 'yup';
 import { useNavigation } from '@react-navigation/native';
 
+import { useAuth } from '../../hooks/auth';
+
 import { Button } from '../../components/Button';
 import { ButtonSingIn } from '../../components/ButtonSingIn';
 import { Input } from '../../components/Inputs/Input';
@@ -29,6 +31,8 @@ export function SignIn() {
 
   const navigation = useNavigation();
 
+  const { signIn } = useAuth();
+
   async function handleSignIn() {
     try {
       const schema = Yup.object().shape({
@@ -43,6 +47,8 @@ export function SignIn() {
       Alert.alert('Tudo certo')
 
       // Fazer login,
+      signIn({ email, password });
+
     } catch (error) {
       if(error instanceof Yup.ValidationError) {
         Alert.alert('Erro', error.message);
