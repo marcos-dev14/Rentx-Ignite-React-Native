@@ -57,7 +57,7 @@ export function SplashScreen() {
   });
 
   function startApp() {
-    navigation.navigate('home')
+    navigation.navigate('signIn')
   }
 
   useEffect(() => {

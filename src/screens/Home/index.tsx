@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigation } from '@react-navigation/native';
-import { StatusBar, BackHandler } from 'react-native';
+import { StatusBar } from 'react-native';
 import { RFValue } from 'react-native-responsive-fontsize';
 import { Ionicons } from '@expo/vector-icons';
+import { useTheme } from 'styled-components';
 
 import { api }  from '../../services/api';
 import { CarDataProps } from '../../@types/CarTypes';
@@ -18,24 +19,16 @@ import {
   HeaderContent,
   TotalCars,
   CarList,
-  MyCarsButton
 } from './styles';
-import { useTheme } from 'styled-components';
 
 export function Home() {
   const [cars, setCars] = useState<CarDataProps[]>();
   const [loading, setLoading] = useState(true);
 
-  const theme = useTheme();
-
   const navigation = useNavigation();
 
   function handleGoCarDetails(car: CarDataProps) {
     navigation.navigate('carDetails', { car })
-  }
-
-  function handleGoMyCars() {
-    navigation.navigate('myCars')
   }
 
   useEffect(() => {
@@ -52,12 +45,6 @@ export function Home() {
 
     fetchCars();
   },[]);
-  
-  useEffect(() => {
-    BackHandler.addEventListener('hardwareBackPress', () => {
-      return true
-    })
-  },[])
 
   return (
     <>
@@ -88,15 +75,6 @@ export function Home() {
             />}
           />
         }
-
-        <MyCarsButton onPress={handleGoMyCars} activeOpacity={0.7}>
-          {/* @ts-ignore */}
-          <Ionicons 
-            name="ios-car-sport"
-            size={23}
-            color={theme.colors.shape}
-          />
-        </MyCarsButton>
       </Container>
     </>
   );
