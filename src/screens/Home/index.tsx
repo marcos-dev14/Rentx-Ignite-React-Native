@@ -2,10 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useNavigation } from '@react-navigation/native';
 import { StatusBar } from 'react-native';
 import { RFValue } from 'react-native-responsive-fontsize';
-import { Ionicons } from '@expo/vector-icons';
-import { useTheme } from 'styled-components';
 
-import { api }  from '../../services/api';
 import { CarDataProps } from '../../@types/CarTypes';
 
 import LogoSvg from '../../assets/logo.svg';
@@ -32,18 +29,28 @@ export function Home() {
   }
 
   useEffect(() => {
+    let isMounted = true;
+
     async function fetchCars() {
       try {
         const response = await api.get('/cars');
-        setCars(response.data)
+        if(isMounted) {
+          setCars(response.data);
+        }
       } catch (error) {
         console.log(error)
       } finally {
-        setLoading(false);
+        if(isMounted) {
+          setLoading(false);
+        }
       }
     }
 
     fetchCars();
+
+    return () => {
+      isMounted = false;
+    }
   },[]);
 
   return (
