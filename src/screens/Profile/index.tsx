@@ -43,7 +43,7 @@ export function Profile() {
     navigation.goBack();
   }
 
-  function handleSinOut() {
+  function handleSingOut() {
 
   }
 
@@ -69,7 +69,7 @@ export function Profile() {
                 />
                 <HeaderTitle>Editar Perfil</HeaderTitle>
                 <LogoutButton 
-                  onPress={handleSinOut}
+                  onPress={handleSingOut}
                   activeOpacity={0.7}
                 >
                   <Feather 
