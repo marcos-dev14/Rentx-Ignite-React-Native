@@ -3,6 +3,7 @@ import { useNavigation } from '@react-navigation/native';
 import { StatusBar } from 'react-native';
 import { RFValue } from 'react-native-responsive-fontsize';
 
+import { api } from '../../services/api';
 import { CarDataProps } from '../../@types/CarTypes';
 
 import LogoSvg from '../../assets/logo.svg';
@@ -17,6 +18,7 @@ import {
   TotalCars,
   CarList,
 } from './styles';
+
 
 export function Home() {
   const [cars, setCars] = useState<CarDataProps[]>();
