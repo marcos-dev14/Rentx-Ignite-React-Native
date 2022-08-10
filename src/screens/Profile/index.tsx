@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { StatusBar } from 'react-native';
 import { useTheme } from 'styled-components';
 import { useNavigation } from '@react-navigation/native';
@@ -15,9 +15,15 @@ import {
   PhotoContainer,
   Photo,
   PhotoButton,
+  Content,
+  Options,
+  Option,
+  OptionTitle,
 } from './styles';
 
 export function Profile() {
+  const [optionActive, setOptionActive] = useState<'dataEdit' | 'passwordEdit'>('dataEdit');
+
   const theme = useTheme();
   const navigation = useNavigation();
 
@@ -27,6 +33,10 @@ export function Profile() {
 
   function handleSinOut() {
 
+  }
+
+  function handleOptionChange(optionSelected: 'dataEdit' | 'passwordEdit') {
+    setOptionActive(optionSelected);
   }
 
   return (
@@ -67,6 +77,24 @@ export function Profile() {
             </PhotoButton>
           </PhotoContainer>
         </Header>
+
+        <Content>
+          <Options>
+            <Option 
+              active={optionActive === 'dataEdit'}
+              onPress={() => handleOptionChange('dataEdit')}
+            >
+              <OptionTitle active={optionActive === 'dataEdit'}>Dados</OptionTitle>
+            </Option>
+
+            <Option 
+              active={optionActive === 'passwordEdit'}
+              onPress={() => handleOptionChange('passwordEdit')}
+            >
+              <OptionTitle active={optionActive === 'passwordEdit'}>Trocar senha</OptionTitle>
+            </Option>
+          </Options>
+        </Content>
       </Container>   
     </>
   );
