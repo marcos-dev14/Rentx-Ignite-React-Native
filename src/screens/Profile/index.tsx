@@ -106,6 +106,23 @@ export function Profile() {
     }
   }
 
+  async function handleSignOut() {
+    Alert.alert(
+      'Tem certeza?',
+      'Se você sair, Irá precisar de internet para conectar-se novamente.',
+      [
+        {
+          text: 'Cancelar',
+          onPress: () => {},
+        },
+        {
+          text: 'Sair',
+          onPress: () => signOut()
+        }
+      ]
+    )
+  }
+
   return (
     <>
       <StatusBar 
@@ -124,7 +141,7 @@ export function Profile() {
                 />
                 <HeaderTitle>Editar Perfil</HeaderTitle>
                 <LogoutButton 
-                  onPress={signOut}
+                  onPress={handleSignOut}
                   activeOpacity={0.7}
                 >
                   <Feather 
