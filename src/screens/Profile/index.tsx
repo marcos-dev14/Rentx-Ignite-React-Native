@@ -9,6 +9,8 @@ import { useTheme } from 'styled-components';
 import { useNavigation } from '@react-navigation/native';
 import { Feather } from '@expo/vector-icons';
 import { useBottomTabBarHeight } from '@react-navigation/bottom-tabs';
+import * as ImagePicker from 'expo-image-picker';
+import { ImageInfo } from 'expo-image-picker/build/ImagePicker.types';
 
 import { useAuth } from '../../hooks/auth';
 
@@ -33,9 +35,13 @@ import {
 } from './styles';
 
 export function Profile() {
-  const [optionActive, setOptionActive] = useState<'dataEdit' | 'passwordEdit'>('dataEdit');
-
   const { user } = useAuth();
+
+  const [optionActive, setOptionActive] = useState<'dataEdit' | 'passwordEdit'>('dataEdit');
+  const [avatar, setAvatar] = useState(user.avatar);
+  const [name, setName] = useState(user.name);
+  const [driverLicense, setDriverLicense] = useState(user.driver_license);
+
   const theme = useTheme();
   const navigation = useNavigation();
 
@@ -49,6 +55,24 @@ export function Profile() {
 
   function handleOptionChange(optionSelected: 'dataEdit' | 'passwordEdit') {
     setOptionActive(optionSelected);
+  }
+
+  async function handleSelectedAvatar() {
+    const result = await ImagePicker.launchImageLibraryAsync({
+      mediaTypes: ImagePicker.MediaTypeOptions.Images,
+      allowsEditing: true,
+      aspect: [4, 4],
+      quality: 1,
+    });
+
+    if(result.cancelled) {
+      return;
+    }
+
+    if(!result.cancelled) {
+      const { uri } = result as ImageInfo;
+      setAvatar(uri)
+    }
   }
 
   return (
@@ -81,8 +105,8 @@ export function Profile() {
               </HeaderTop>
 
               <PhotoContainer>
-                <Photo source={{ uri: 'https://github.com/marcos-dev14.png' }} />
-                <PhotoButton onPress={() => {}}>
+                { !!avatar && <Photo source={{ uri: avatar }} /> }
+                <PhotoButton onPress={handleSelectedAvatar}>
                   <Feather 
                     name="camera"
                     size={24}
@@ -118,6 +142,7 @@ export function Profile() {
                       placeholder="Nome"
                       autoCorrect={false}
                       defaultValue={user.name}
+                      onChangeText={setName}
                     />
                     <Input 
                       iconName="mail"
@@ -129,6 +154,7 @@ export function Profile() {
                       placeholder="CNH"
                       keyboardType="numeric"
                       defaultValue={user.driver_license}
+                      onChangeText={setDriverLicense}
                     />
                   </Section>
 
